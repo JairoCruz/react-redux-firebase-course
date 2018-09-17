@@ -39,7 +39,7 @@ class App extends Component {
       body: this.state.body
     };
     // save object note in database firebase
-    this.props.saveNote(note)
+    this.props.saveNote(note);
     // reset state
     this.setState({
       title: "",
@@ -51,9 +51,11 @@ class App extends Component {
   renderNotes() {
     return _.map(this.props.notes, (note, key) => {
       return (
-        <div key={key}>
-          <h2> {note.title} </h2>
-          <p> {note.body} </p>
+        <div className="card" key={key}>
+          <div className="card-body">
+            <h5 className="card-title"> {note.title} </h5>
+            <p className="card-text"> {note.body} </p>
+          </div>
         </div>
       );
     });
@@ -102,10 +104,13 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps){
+function mapStateToProps(state, ownProps) {
   return {
     notes: state.notes
-  }
+  };
 }
 
-export default connect(mapStateToProps, {getNotes, saveNote})(App);
+export default connect(
+  mapStateToProps,
+  { getNotes, saveNote }
+)(App);
