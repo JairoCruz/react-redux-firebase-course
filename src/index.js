@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-// create redux store -> reducers -> 'actions' | applyMiddleware()
+// create redux store -> reducers -> 'actions - actionType' | applyMiddleware()
 const store = createStore(composeWithDevTools());
 
 ReactDOM.render(<App />, document.getElementById('root'));
