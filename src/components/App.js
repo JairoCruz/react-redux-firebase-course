@@ -10,8 +10,7 @@ class App extends Component {
     // state
     this.state = {
       title: "",
-      body: "",
-      notes: {}
+      body: ""
     };
     // bind
     this.handleChange = this.handleChange.bind(this);
@@ -40,7 +39,7 @@ class App extends Component {
       body: this.state.body
     };
     // save object note in database firebase
-    this.props.saveNote()
+    this.props.saveNote(note)
     // reset state
     this.setState({
       title: "",
@@ -50,7 +49,7 @@ class App extends Component {
 
   // render notes
   renderNotes() {
-    return _.map(this.state.notes, (note, key) => {
+    return _.map(this.props.notes, (note, key) => {
       return (
         <div key={key}>
           <h2> {note.title} </h2>
