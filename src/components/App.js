@@ -3,6 +3,7 @@ import { database } from "../firebase";
 import _ from "lodash";
 import { connect } from "react-redux";
 import { getNotes, saveNote, deleteNote } from "../actions/notesAction";
+import NoteCard from './NoteCard';
 
 class App extends Component {
   constructor(props) {
@@ -51,13 +52,18 @@ class App extends Component {
   renderNotes() {
     return _.map(this.props.notes, (note, key) => {
       return (
-        <div className="card card-padding" key={key}>
-          <div className="card-body">
-            <h5 className="card-title"> {note.title} </h5>
-            <p className="card-text"> {note.body} </p>
-            <button className="btn btn-danger btn-xs" onClick={() => this.props.deleteNote(key)}>Delete</button>
-          </div>
-        </div>
+        <NoteCard key={key}>
+          
+            <h5> {note.title} </h5>
+            <p> {note.body} </p>
+            <button
+              className="btn btn-danger btn-xs"
+              onClick={() => this.props.deleteNote(key)}
+            >
+              Delete
+            </button>
+        
+        </NoteCard>
       );
     });
   }
