@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.card-padding {
+  margin-top: 5px;
+  margin-bottom: 5px; 
+}
