@@ -19,23 +19,30 @@ const store = createStore(
 
 // Header Navigation
 const Header = () => (
-  <nav className="navbar navbar-default">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
       <div className="navbar-header">
         <button
           type="button"
-          className="navbar-toggle"
+          className="navbar-toggler"
           data-toggle="collapse"
           data-target="#myNavbar"
         >
-          <span className="icon-bar" />
-          <span className="icon-bar" />
-          <span className="icon-bar" />
+          <span className="navbar-toggler-icon" />
         </button>
 
         <Link className="navbar-brand" to="/">
           DIARY2018
         </Link>
+      </div>
+      <div className="collapse navbar-collapse" id="myNavbar">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/login">
+              Login
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
