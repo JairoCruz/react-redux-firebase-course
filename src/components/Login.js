@@ -10,13 +10,13 @@ class Login extends Component {
               Login with your favourite <b>Social Network</b>
             </h1>
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-5">
             <button className="btn btn-danger btn-lg">
                 Login with Google
             </button>
           </div>
-
-          <div className="col-sm-6">
+          <div className="col-sm-2"><br/></div>
+          <div className="col-sm-5">
             <button className="btn btn-success btn-lg">
                 Login with Twitter
             </button>
