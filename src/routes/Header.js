@@ -24,19 +24,19 @@ class Header extends Component {
           </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="navbar-nav ml-auto">
-              {
-                  this.props.user === null ? (
-                    <li className="nav-item active">
-                    <Link className="nav-link" to="/login">
-                      Login
-                    </Link>
-                  </li>
-                  ) : (
-                      <li>
-                          <Link to="/logout">logout</Link>
-                      </li>
-                  )
-              }
+              {this.props.user === null ? (
+                <li className="nav-item active">
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/logout" onClick={() => this.props.logout()}>
+                    logout
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
