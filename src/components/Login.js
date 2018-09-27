@@ -3,6 +3,18 @@ import { connect } from "react-redux";
 import { googleLogin, twitterLogin } from "../actions/userAction";
 
 class Login extends Component {
+  componentWillMount() {
+    if (this.props.user !== null) {
+      this.props.history.push("/");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.user !== null) {
+      nextProps.history.push("/");
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -37,7 +49,13 @@ class Login extends Component {
   }
 }
 
+function mapStateToProps(state, onwProps) {
+  return {
+    user: state.user
+  };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { googleLogin, twitterLogin }
 )(Login);
