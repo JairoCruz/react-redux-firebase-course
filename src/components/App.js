@@ -3,8 +3,9 @@ import { database } from "../firebase";
 import _ from "lodash";
 import { connect } from "react-redux";
 import { getNotes, saveNote, deleteNote } from "../actions/notesAction";
-import NoteCard from './NoteCard';
-import {getUser} from '../actions/userAction';
+import NoteCard from "./NoteCard";
+import { getUser } from "../actions/userAction";
+import {Link} from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -20,8 +21,6 @@ class App extends Component {
     this.renderNotes = this.renderNotes.bind(this);
   }
 
-  
-
   // handle change
   handleChange(e) {
     this.setState({
@@ -35,7 +34,8 @@ class App extends Component {
     e.preventDefault();
     const note = {
       title: this.state.title,
-      body: this.state.body
+      body: this.state.body,
+      uid: this.props.user.uid
     };
     // save object note in database firebase
     this.props.saveNote(note);
@@ -51,16 +51,18 @@ class App extends Component {
     return _.map(this.props.notes, (note, key) => {
       return (
         <NoteCard key={key}>
-          
+          <Link to={"/${key}"}>
             <h5> {note.title} </h5>
-            <p> {note.body} </p>
+          </Link>
+          <p> {note.body} </p>
+          {note.uid === this.props.user.uid && (
             <button
               className="btn btn-danger btn-xs"
               onClick={() => this.props.deleteNote(key)}
             >
               Delete
             </button>
-        
+          )}
         </NoteCard>
       );
     });

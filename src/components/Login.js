@@ -20,7 +20,7 @@ class Login extends Component {
       <div className="container-fluid">
         <div className="row text-center">
           <div className="col-sm-12 jumbotron">
-            <h1>Notes | {new Date().getFullYear}</h1>
+            <h1>Notes | {new Date().getFullYear()}</h1>
             <h2>
               <i>
                 Login with your favourite

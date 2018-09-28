@@ -14,6 +14,7 @@ import Login from "./components/Login";
 import Header from "./routes/Header";
 import LoadingComponent from "./components/LoadingComponent";
 import AuthenticatedComponent from "./components/AuthenticatedComponent";
+import NoteDetail from "./components/NoteDetail";
 // create redux store -> reducers -> 'actions - actionType' | applyMiddleware()
 const store = createStore(
   rootReducer,
@@ -30,6 +31,7 @@ ReactDOM.render(
             <AuthenticatedComponent>
               <Header />
               <Route path="/" component={App} exact={true} />
+              <Route path="/:id" component={NoteDetail} exact={true} />
             </AuthenticatedComponent>
           </Switch>
         </div>
