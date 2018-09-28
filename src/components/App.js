@@ -51,7 +51,7 @@ class App extends Component {
     return _.map(this.props.notes, (note, key) => {
       return (
         <NoteCard key={key}>
-          <Link to={"/${key}"}>
+          <Link to={`/${key}`}>
             <h5> {note.title} </h5>
           </Link>
           <p> {note.body} </p>
