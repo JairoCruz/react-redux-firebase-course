@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import {editNote} from '../actions/notesAction';
 
 
 class NoteEdit extends Component {
@@ -32,13 +33,15 @@ class NoteEdit extends Component {
         body: this.state.body,
         uid: this.props.uid
       };
-      // save object note in database firebase
-      //this.props.saveNote(note);
+      // update object note in database firebase
+      this.props.editNote(this.props.match.params.id, note);
       // reset state
       this.setState({
         title: "",
         body: ""
       });
+      // return to homepage
+      this.props.history.push('/');
     }
   
     render() {
@@ -90,4 +93,4 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(NoteEdit);
+export default connect(mapStateToProps,{editNote})(NoteEdit);
