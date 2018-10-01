@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { saveComment } from "../actions/notesAction";
 
 class SubmitComment extends Component {
   constructor(props) {
@@ -18,13 +19,15 @@ class SubmitComment extends Component {
     });
   }
 
-  handleSubmit(e){
-      e.preventDefault();
-      const comment = {
-          commentBody: this.state.commentBody,
-          uid: this.props.uid
-      }
-      console.log(this.props.id, comment);
+  handleSubmit(e) {
+    e.preventDefault();
+    const comment = {
+      commentBody: this.state.commentBody,
+      uid: this.props.uid
+    };
+    console.log(this.props.id, comment);
+    this.props.saveComment(this.props.id, comment);
+    this.setState({ commentBody: "" });
   }
 
   render() {
@@ -34,6 +37,7 @@ class SubmitComment extends Component {
           <div className="form-group">
             <textarea
               onChange={this.handleChange}
+              value={this.state.commentBody}
               type="text"
               name="commentBody"
               className="form-control no-border"
@@ -52,11 +56,11 @@ class SubmitComment extends Component {
 
 function mapStateProps(state, ownProps) {
   return {
-    uid: state.user.id
+    uid: state.user.uid
   };
 }
 
 export default connect(
   mapStateProps,
-  {}
+  { saveComment }
 )(SubmitComment);
