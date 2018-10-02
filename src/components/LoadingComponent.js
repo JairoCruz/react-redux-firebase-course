@@ -32,11 +32,7 @@ class LoadingComponent extends Component {
     if ((!userLoading && !notesLoading) || this.props.user === null) {
       return <div>{children}</div>;
     } else {
-      return (
-        <div>
-          <Loading />
-        </div>
-      );
+      return <Loading />;
     }
   }
 }
