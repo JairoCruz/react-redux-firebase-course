@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { getUser } from "../actions/userAction";
 import { getNotes } from "../actions/notesAction";
+import Loading from "../components/Loading";
 
 class LoadingComponent extends Component {
   componentWillMount() {
@@ -33,7 +34,7 @@ class LoadingComponent extends Component {
     } else {
       return (
         <div>
-          <h2>Loading....</h2>
+          <Loading />
         </div>
       );
     }
